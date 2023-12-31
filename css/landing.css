@@ -1,16 +1,35 @@
 /* Landing Page CSS */
 body{
 justify-content: center;
+/* overflow: hidden; */
     margin:0;
     padding:0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: linear-gradient();
+    height: 100%;
+    background-color:hsl(300, 33%, 92%);
 }
+.navbar-brand{
+    width: 10%;
+}
+figure{
+    display: flex;
+    top: -20px;
+     border-image-outset: 2;
+     border-color: aliceblue;
+     margin-top: -50px;
+}
+img{
+    width: 100%;
+      max-height: 100%;
+      border-radius: 40px;
+      height: auto;
+     object-fit: cover;
+   }
 
 header{
     margin-left: 40px;
+    top: -20px;
     text-align: left;
 }
 #login-container{
@@ -19,7 +38,7 @@ header{
     right:80px;
     width: auto;
     background: transparent #1717178a;
-    border: 2px solid;
+    border: 2px solid rgba(225, 255, 255, .5);
     border-radius: 8px;
     display: inline-block;
     /* justify-content: center;
@@ -31,10 +50,17 @@ input{
   position: relative;
   width: 310px;
   margin: 30px 0;
-  border-bottom: 2px solid #171717; 
+  padding: 0 35px 0 5px; 
+  border: none;
+  outline: none;
+  background: transparent;
+  color: black;
+  border-bottom: 2px solid #8f8c8c;
 }
 
 input label{
+    width: 100%;
+    height: 50px;
     position: absolute;
     top: 50%;
     left: 5px;
@@ -44,6 +70,11 @@ input label{
     pointer-events: none;
     transition: .2s;
 }
+ input:focus~label,
+ input:valid~label{
+    top: -5px;
+}
+
 
 #loginButton{
 width: 310px;
@@ -56,7 +87,19 @@ border-radius: 50px;
 cursor: pointer;
 font-size: 1em;
 color: black;
-background-color: aqua;
+background-color: rgb(190, 240, 240);
 font-weight: 500;
 margin-bottom: 1rem;
+}
+#register-link{
+    width: 350px;
+    font-size: .9em;
+    color: #171717;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+#register-link p a{
+    color: #171717;
+    text-decoration: none;
+    font-weight: 600;
 }
