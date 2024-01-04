@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  :root {
+    --classicBlue: #34568b;
+    --purple: #9f00a7;
+    --pink: #ffc0c7;
+    --darkPurple: #282a35;
+    --bodyBg: #ccc;
+    --customGray: #e6d6f6;
+    --facebook: rgb(59, 89, 152);
+    --twitter: rgb(29, 161, 242);
+    --gmail: rgb(219, 68, 55);
+  }
+  body {
+    background-color: var(--bodyBg);
+  }
+  main {
+    position: relative;
+    width: 1000px;
+    height: 750px;
+    top: 10vh;
+    margin: auto;
+  }
+  
+  .visible {
+    display: block;
+  }
+  img {
+    /* position: relative; */
+    height: 750px;
+    width: 100%;
+  }
+  .fa-xmark {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+  }
+  .fa-xmark:hover {
+    cursor: pointer;
+    color: #db4437;
+  }
+  
+  form {
+    width: 330px;
+    margin: auto !important;
+    /* margin-top: 10vh !important; */
+  }
+  .btn {
+    color: #fff;
+  }
+  
+  .fa-circle-user,
+  .fa-key,
+  .fa-envelope,
+  .fa-user,
+  .fa-code {
+    border: 1px solid var(--customGray);
+    padding: 0.5rem;
+  }
+  
+  label[for="rememberMe"]:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  label[for="rememberMe"]:hover > input {
+    box-shadow: 0 0 5px 10px #333;
+  }
+  .alt-logIn {
+    /* font-size: 1.1rem; */
+    padding: 0.6rem;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .fa-facebook-square {
+    background-color: rgb(39, 58, 100);
+  }
+  .btn-facebook {
+    background-color: var(--facebook);
+    color: #fff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .fa-twitter-square {
+    background-color: rgb(24, 127, 192);
+  }
+  .btn-twitter {
+    background-color: var(--twitter);
+    color: #fff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .fa-google {
+    background-color: rgb(153, 48, 39);
+  }
+  .btn-gmail {
+    background-color: var(--gmail);
+  
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  /* TODO: Create and style a copy right in the footer   */
+  
+  footer {
+    position: relative;
+  
+    margin-top: 100px;
+    /* height: 100%; */
+  }
+  footer:hover {
+    cursor: pointer;
+    color: var(--twitter);
+  }
+  /* TODO: Make sign in form Responsive  */
+  @media (max-width: 1000px) {
+    main {
+      max-width: 400px;
+      height: 750px;
+    }
+    main div:nth-child(3) {
+      display: none;
+    }
+  }
+  
