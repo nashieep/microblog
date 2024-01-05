@@ -17,7 +17,7 @@
     --gmail: rgb(219, 68, 55);
   }
   body {
-    background-color: var(--bodyBg);
+    background-image: url("images/nightskylogin.webp");
   }
   main {
     position: relative;
