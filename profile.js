@@ -1,69 +1,40 @@
-function getMessageHTML(m) {
-    return `
-        <fieldset id="messageTemplate">
-        <legend>Message Template</legend>
-        <label>
-            <div class="name">Username:</div><input readonly="readonly" value="${m.username}">
-        </label>
-        <label>
-            <div class="name">Text:</div><input readonly="readonly" value="${m.text}">
-        </label>
-        <label>
-            <div class="name"></div><input type="button" value="LIKE" onclick="like('${m._id}')">
-            ${m.likes.length} likes.
-        </label>
-        </fieldset>
-    `;
-}
-async function post(messageText){
-    await api.post("/api/posts", {text: messageText}, localStorage.token);
-    showMessages(localStorage.username)
-    userList.value = localStorage.username;
-}
+const apiUrl = 'http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts'; 
 
-function like(id){
-    api.post("/api/likes", {postId: id}, localStorage.token);
-}
+const postData = {
+  post: {
+    _id: 'string',
+    text: 'Hello, this is a sample post!',
+    username: 'john_doe',
+    createdAt: '2024-01-04T14:33:48.833Z',
+    likes: [
+      {
+        _id: 'string',
+        username: 'jane_doe',
+        postId: 'string',
+        createdAt: '2024-01-04T14:33:48.833Z'
+      }
+    ]
+  },
+  statusCode: 399
+};
 
-async function showMessages(username = "") {
-    let url = "/api/posts"
-    messages = await api.get(url, localStorage.token);
-    if (username != "") {
-        messages = messages.filter(m=>m.username == username)
+// Make a POST request
+fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(postData),
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(HTTP error! Status: ${response.status});
     }
-    results.innerHTML = messages.map(getMessageHTML).join("")
-}
-
-function getUserOption(u){
-    return `<option>${u.username}</option>`
-}
-
-document.addEventListener("DOMContentLoaded", async e => {
-    const users = await api.get("/api/users", localStorage.token)
-    userList.innerHTML += users.map(getUserOption).join("")
-
-    showMessages(); //ALL
-
-    userList.addEventListener("change", async e => {
-        showMessages(userList.selectedOptions[0].value)
-    });
-
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    api.getPosts(localStorage.token, data => {
-        data.forEach(post => {
-            document.getElementById("target").innerHTML += `<div class="card shadow p-3 mb-5">${post.text}</div>`;
-        });
-    });
-
-    document.getElementById("create").addEventListener("click", () => {
-        api.createPost(localStorage.token, { text: document.getElementById("text").value }, data => {
-            window.location.href = window.location.href; //REFRESH
-        });
-    });
-
-});
-
+    return response.json();
+  })
+  .then(data => {
+    console.log('Post created successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error creating post:', error);
+  });
